@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.ejercicio1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -30,7 +31,11 @@ public class Alumno {
 		LibretaUniversitaria = libretaUniversitaria;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Alumno [Nombre=" + Nombre + ", Apellido=" + Apellido + ", LibretaUniversitaria=" + LibretaUniversitaria
+				+ ", notas=" + Arrays.toString(notas) + "]";
+	}
 	public Double[] getNotas() {
 		return notas;
 	}
@@ -91,6 +96,7 @@ public class Alumno {
 		for (Alumno unAlumno: listaAlumnos) {
 			if (unAlumno.LibretaUniversitaria==LU) {
 				 indice = listaAlumnos.indexOf(unAlumno);
+				 System.out.println("Alumno "+ unAlumno.Nombre+" eliminado");
 			}
 		}
 		listaAlumnos.remove(indice);
@@ -117,7 +123,7 @@ public class Alumno {
 	
 	public void mostrarAlumnos (ArrayList<Alumno> listaAlumnos) {
 		for (Alumno unAlumno: listaAlumnos) {
-			System.out.println(unAlumno);
+			System.out.println(unAlumno.toString());
 		}
 	}
 	
@@ -128,7 +134,7 @@ public class Alumno {
 		}
 	}
 	
-	public ArrayList<Alumno> mostrarMenuAlumno (ArrayList<Alumno> listaAlumno){
+	public void mostrarMenuAlumno (ArrayList<Alumno> listaAlumno){
 		 Scanner sn = new Scanner(System.in);
 	        boolean salir = false;
 	        int opcion;
@@ -175,13 +181,12 @@ public class Alumno {
 	                        salir = true;
 	                        break;
 	                    default:
-	                        System.out.println("Solo números entre 1 y 4");
+	                        System.out.println("Solo números entre 1 y 6");
 	                }
 	            } catch (InputMismatchException e) {
 	                System.out.println("Debes insertar un número");
 	                sn.next();
 	            }
 	        }
-		return null;
 	}
 }

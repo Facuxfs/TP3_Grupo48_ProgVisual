@@ -123,7 +123,10 @@ public class Principal {
 		//Punto 1
 		Principal prueba = new Principal();
 		Alumno unAlumno = new Alumno();
+		Producto unProducto = new Producto();
 		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+		ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+
 		//prueba.cargarVectores(vector1);
 		//System.out.println("primer vector cargado");
 		//prueba.cargarVectores(vector2);
@@ -150,7 +153,10 @@ public class Principal {
 		//prueba.mostrarFrutas(prueba.cargarFrutas());
 	
 		//Punto 8
-		unAlumno.mostrarMenuAlumno(listaAlumnos);
+		//unAlumno.mostrarMenuAlumno(listaAlumnos);
+		
+		//Punto 9
+		unProducto.mostrarMenuProducto(listaProductos);
 	}
 
 }

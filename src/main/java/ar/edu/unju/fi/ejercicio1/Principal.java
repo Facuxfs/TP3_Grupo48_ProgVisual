@@ -122,6 +122,8 @@ public class Principal {
 	public static void main(String[] args) {
 		//Punto 1
 		Principal prueba = new Principal();
+		Alumno unAlumno = new Alumno();
+		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 		//prueba.cargarVectores(vector1);
 		//System.out.println("primer vector cargado");
 		//prueba.cargarVectores(vector2);
@@ -145,7 +147,10 @@ public class Principal {
 		//prueba.invertirDiezNumeros();
 		
 		//Punto 7 
-		prueba.mostrarFrutas(prueba.cargarFrutas());
+		//prueba.mostrarFrutas(prueba.cargarFrutas());
+	
+		//Punto 8
+		unAlumno.mostrarMenuAlumno(listaAlumnos);
 	}
 
 }

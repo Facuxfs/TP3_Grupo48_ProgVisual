@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.ejercicio1;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Alumno {
@@ -78,10 +80,108 @@ public class Alumno {
 		System.out.println("Ingrese nota N°"+i);
 		vectorNotas[i]=sc.nextDouble();
 		}
-		System.out.println("sale");
 		unAlumno.notas=vectorNotas;
 		
 		System.out.println("El promedio del alumno es : "+unAlumno.calcularPromdeio());
 		System.out.println("La nota mas alta es : "+unAlumno.buscarNotaSuperio());
+	}
+	
+	public  ArrayList<Alumno> eliminarAlumno (ArrayList<Alumno> listaAlumnos ,int LU){
+		int indice = 0;
+		for (Alumno unAlumno: listaAlumnos) {
+			if (unAlumno.LibretaUniversitaria==LU) {
+				 indice = listaAlumnos.indexOf(unAlumno);
+			}
+		}
+		listaAlumnos.remove(indice);
+		return listaAlumnos;
+	}
+	
+	public ArrayList<Alumno> modificarAlumno (ArrayList<Alumno> listaAlumnos ,int LU){
+		int indice = 0;
+		for (Alumno unAlumno: listaAlumnos) {
+			if (unAlumno.LibretaUniversitaria==LU) {
+				 indice = listaAlumnos.indexOf(unAlumno);
+			}
+		}
+		Double[] vectorNotas = new Double[5];
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i <vectorNotas.length; i++) {
+			System.out.println("Ingrese nota N°"+i);
+			vectorNotas[i]=sc.nextDouble();
+			}
+		listaAlumnos.get(indice).notas=vectorNotas;
+		return listaAlumnos;
+
+	}
+	
+	public void mostrarAlumnos (ArrayList<Alumno> listaAlumnos) {
+		for (Alumno unAlumno: listaAlumnos) {
+			System.out.println(unAlumno);
+		}
+	}
+	
+	public void mostrarPromediosMayoraSeis (ArrayList<Alumno> listaAlumnos) {
+		for (Alumno unAlumno: listaAlumnos) {
+			if(unAlumno.calcularPromdeio()>=6.0)
+			System.out.println(unAlumno);
+		}
+	}
+	
+	public ArrayList<Alumno> mostrarMenuAlumno (ArrayList<Alumno> listaAlumno){
+		 Scanner sn = new Scanner(System.in);
+	        boolean salir = false;
+	        int opcion;
+	        while (!salir) {
+	 
+	            System.out.println("1. Nuevo Alumno");
+	            System.out.println("2. Eliminar Alumno");
+	            System.out.println("3. Modificar nota del Alumno");
+	            System.out.println("4. Mostrar todos los Alumnos");
+	            System.out.println("5. Mostrar los que superan el promeido de 6");
+	            System.out.println("6. Salir");
+	            Alumno unAlumno = new Alumno();
+	            try {
+	 
+	                System.out.println("Escribe una de las opciones");
+	                opcion = sn.nextInt();
+	 
+	                switch (opcion) {
+	                
+	                    case 1:
+	                        System.out.println("Has seleccionado la opcion 1");
+	                        unAlumno.cargarDatosAlumno(unAlumno);
+	                        listaAlumno.add(unAlumno);
+	                        break;
+	                    case 2:
+	                        System.out.println("Has seleccionado la opcion 2");
+	                        System.out.println("Ingrese el LU del alumno a eliminar");
+	                        unAlumno.eliminarAlumno(listaAlumno, sn.nextInt());
+	                        break;
+	                    case 3:
+	                        System.out.println("Has seleccionado la opcion 3");
+	                        System.out.println("Ingrese el LU del alumno a modificar las notas");
+	                        unAlumno.modificarAlumno(listaAlumno, sn.nextInt());
+	                        break;
+	                    case 4:
+	                    	 System.out.println("Has seleccionado la opcion 4");
+	                    	 unAlumno.mostrarAlumnos(listaAlumno);	
+	                    	 break;
+	                    case 5:
+	                    	System.out.println("Has seleccionado la opcion 5");
+	                    	 unAlumno.mostrarPromediosMayoraSeis(listaAlumno);
+	                    	break;
+	                    case 6:
+	                        salir = true;
+	                        break;
+	                    default:
+	                        System.out.println("Solo números entre 1 y 4");
+	                }
+	            } catch (InputMismatchException e) {
+	                System.out.println("Debes insertar un número");
+	                sn.next();
+	            }
+	        }
+		return null;
 	}
 }
